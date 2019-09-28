@@ -1,59 +1,50 @@
 import React from "react";
-import clsx from "clsx";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import DeleteIcon from "@material-ui/icons/Delete";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import KeyboardVoiceIcon from "@material-ui/icons/KeyboardVoice";
-import Icon from "@material-ui/core/Icon";
-import SaveIcon from "@material-ui/icons/Save";
+
+import { Link, Redirect, NavLink } from "react-router-dom";
+
+import { toast } from "react-toastify";
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(2)
   },
   leftIcon: {
     marginRight: theme.spacing(1)
   },
   rightIcon: {
     marginLeft: theme.spacing(1)
-  },
-  iconSmall: {
-    fontSize: 20
   }
 }));
 
-export default function IconLabelButtons() {
+function ButtonRow() {
   const classes = useStyles();
 
+  const buttonPressed = () => {
+    toast.success("SUCCESS TOAST");
+    toast.info("SUCCESS TOAST");
+    toast.error("ERROR TOAST");
+  };
+
   return (
-    <div>
-      <Button variant="contained" color="secondary" className={classes.button}>
-        Delete
-        <DeleteIcon className={classes.rightIcon} />
-      </Button>
-      <Button variant="contained" color="primary" className={classes.button}>
-        Send
-        {/* This Button uses a Font Icon, see the installation instructions in the docs. */}
-        <Icon>Send</Icon>
-      </Button>
-      <Button variant="contained" color="default" className={classes.button}>
-        Upload
-        <CloudUploadIcon className={classes.rightIcon} />
-      </Button>
-      <Button
-        variant="contained"
-        disabled
-        color="secondary"
-        className={classes.button}
-      >
-        <KeyboardVoiceIcon className={classes.leftIcon} />
-        Talk
-      </Button>
-      <Button variant="contained" size="small" className={classes.button}>
-        <SaveIcon className={clsx(classes.leftIcon, classes.iconSmall)} />
-        Save
-      </Button>
-    </div>
+    <React.Fragment>
+      <Link to="/overview">
+        <Button
+          variant="contained"
+          color="secondary"
+          className={classes.button}
+        >
+          Overview
+        </Button>
+      </Link>
+      <Link to="/calender">
+        <Button variant="contained" color="primary" className={classes.button}>
+          Calender
+        </Button>
+      </Link>
+    </React.Fragment>
   );
 }
+
+export default ButtonRow;
