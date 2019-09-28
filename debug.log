@@ -1,0 +1,5 @@
+[0925/094903.982:ERROR:crashpad_client_win.cc(381)] OpenProcess: Access is denied. (0x5)
+[0925/103650.941:ERROR:crashpad_client_win.cc(381)] OpenProcess: Access is denied. (0x5)
+[0925/103934.971:ERROR:crashpad_client_win.cc(381)] OpenProcess: Access is denied. (0x5)
+[0928/083001.348:ERROR:crashpad_client_win.cc(381)] OpenProcess: Access is denied. (0x5)
+[0928/083209.790:ERROR:crashpad_client_win.cc(381)] OpenProcess: Access is denied. (0x5)

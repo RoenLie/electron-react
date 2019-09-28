@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import CustomizedExpansionPanels from "./overviewExpansionPanel"
 
-class Overview extends Component {
+class Calender extends Component {
   render() {
-    return <h1>calender</h1>;
+    return <CustomizedExpansionPanels/>
   }
 }
 
-export default Overview;
+export default Calender;
