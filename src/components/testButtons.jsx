@@ -9,13 +9,13 @@ import { toast } from "react-toastify";
 const useStyles = makeStyles(theme => ({
   button1: {
     margin: theme.spacing(2),
-    backgroundColor:'rgb(0, 188, 212)',
-    color:'rgb(255, 255, 255)'
+    backgroundColor: "rgb(0, 188, 212)",
+    color: "rgb(255, 255, 255)"
   },
   button2: {
     margin: theme.spacing(2),
-    backgroundColor:'rgb(0, 188, 212)',
-    color:'rgb(255, 255, 255)'
+    backgroundColor: "rgb(0, 188, 212)",
+    color: "rgb(255, 255, 255)"
   },
   leftIcon: {
     marginRight: theme.spacing(1)
@@ -23,8 +23,8 @@ const useStyles = makeStyles(theme => ({
   rightIcon: {
     marginLeft: theme.spacing(1)
   },
-  link:{
-    textDecoration: 'none'
+  link: {
+    textDecoration: "none"
   }
 }));
 
@@ -40,10 +40,7 @@ function ButtonRow() {
   return (
     <React.Fragment>
       <Link className={classes.link} to="/overview">
-        <Button
-          variant="contained"
-          className={classes.button1}
-        >
+        <Button variant="contained" className={classes.button1}>
           Overview
         </Button>
       </Link>

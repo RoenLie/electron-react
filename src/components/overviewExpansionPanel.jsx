@@ -80,19 +80,6 @@ const ExpansionPanelActions = withStyles(theme => ({
   }
 }))(MuiExpansionPanelActions);
 //=============================================================================
-const theme = createMuiTheme({
-  overrides: {
-    // Style sheet name ⚛️
-    MuiButton: {
-      // Name of the rule
-      text: {
-        // Some CSS
-        color: "white"
-      }
-    }
-  }
-});
-//=============================================================================
 const TextBox = ({ label: labelText }) => {
   const classes = useStyles();
   const [values, setValues] = React.useState({});
@@ -115,6 +102,7 @@ const TextBox = ({ label: labelText }) => {
   );
 };
 //=============================================================================
+
 const HeaderTextBox = ({ label: labelText }) => {
   const [name, setName] = React.useState("Composed TextField");
   const classes = useStyles();
@@ -123,12 +111,25 @@ const HeaderTextBox = ({ label: labelText }) => {
     setName(event.target.value);
   };
 
+  const StyledInput = withStyles({
+    root: {
+      color: "white",
+      borderBottom: "1px solid white"
+    }
+  })(Input);
+
+  const StyledInputLabel = withStyles({
+    root: {
+      color: "#212121"
+    }
+  })(InputLabel);
+
   return (
-    <div className={classes.container}>
+    <div className={classes.container} Style="pointer-events: none;">
       {/* ======================================================================= */}
-      <FormControl theme={theme}>
-        <InputLabel>Name</InputLabel>
-        <Input
+      <FormControl>
+        <StyledInputLabel>Name</StyledInputLabel>
+        <StyledInput
           id="component-simple"
           label={labelText}
           value="hello this is text"
