@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Calender from "./calender";
 import Overview from "./overview";
+import Test from "./test"
 import ButtonRow from "./testButtons";
 
 function LandingPage() {
@@ -16,6 +17,7 @@ function LandingPage() {
       <Switch>
         <Route path="/overview" component={Overview} />
         <Route path="/calender" component={Calender} />
+        <Route path="/test" component={Test} />
         <Redirect from="/" exact to="/overview" />
         <Redirect to="/not-found" />
       </Switch>

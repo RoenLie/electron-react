@@ -49,6 +49,11 @@ function ButtonRow() {
           Calender
         </Button>
       </Link>
+      <Link className={classes.link} to="/test">
+        <Button variant="contained" className={classes.button1}>
+          Test
+        </Button>
+      </Link>
     </React.Fragment>
   );
 }
