@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Calender from "./calender";
 import Overview from "./overview";
-import Test from "./test"
+import Test from "./test";
 import ButtonRow from "./testButtons";
 
 function LandingPage() {

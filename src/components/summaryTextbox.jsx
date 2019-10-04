@@ -1,40 +1,38 @@
-import React from "react";
+import React from 'react';
 
 import { withStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 
-const SummaryTextBox = ({ label: labelText }) => {
-  const StyledInput = withStyles({
-    root: {
-      color: "#FFFFFF",
-      borderBottom: "1px solid white"
-    }
-  })(Input);
+const StyledInput = withStyles({
+  root: {
+    color: "#FFFFFF",
+    borderBottom: "1px solid white",
+    margin:"dense",
+  }
+})(Input);
 
-  const StyledInputLabel = withStyles({
-    root: {
-      color: "#FFFFFF"
-    }
-  })(InputLabel);
+const StyledInputLabel = withStyles({
+  root: {
+    color: "#FFFFFF"
+  }
+})(InputLabel);
 
+const SummaryTextBox = ({id,value}) =>{
   return (
-    <div Style="pointer-events: none;">
-      {/* ======================================================================= */}
+    // <div Style="pointer-events: none;">
+    <div>
       <FormControl>
-        <StyledInputLabel>Name</StyledInputLabel>
+        <StyledInputLabel>field1</StyledInputLabel>
         <StyledInput
-          id="component-simple"
-          label={labelText}
-          value="hello this is text"
-          readOnly={true}
-          margin="dense"
+          id={id}
+          type="text"
+          value = {value}
         />
       </FormControl>
-      {/* ===================================================================== */}
     </div>
   );
-};
-
+}
+ 
 export default SummaryTextBox;

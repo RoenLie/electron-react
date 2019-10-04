@@ -8,8 +8,7 @@ import MuiExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 
-import SummaryTextbox from "./summaryTextbox";
-import DetailsTextbox from "./detailsTextbox";
+import TextboxGroup from "./textboxGroup"
 
 const ExpansionPanel = withStyles({
   root: {
@@ -54,12 +53,6 @@ const ExpansionPanelActions = withStyles(theme => ({
 }))(MuiExpansionPanelActions);
 //=============================================================================
 const CustomExpansionPanel = () => {
-  const props = {
-    textbox: {
-      id: "test",
-      value: "this is the value"
-    }
-  };
 
   return (
     <React.Fragment>
@@ -69,15 +62,11 @@ const CustomExpansionPanel = () => {
           aria-controls="panel1c-content"
           id="panel_header"
         >
-          <SummaryTextbox label="tool sn" />
+
+        <TextboxGroup/>
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails>
-          <DetailsTextbox
-            key={props.textbox}
-            label="tool sn"
-            value={props.textbox}
-          />
         </ExpansionPanelDetails>
 
         <ExpansionPanelActions>
