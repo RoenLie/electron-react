@@ -11,7 +11,7 @@ const SummaryTextboxGroup = ({ values, onChange }) => {
             key={id}
             name={name}
             value={value}
-            onChange={onChange(id)}
+            onChange={onChange}
           />
         </div>
       ))}
