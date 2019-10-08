@@ -4,7 +4,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Calender from "./calender";
+import ExpansionPanelPage from "./expansionPanelPage";
 import Overview from "./overview";
 import ButtonRow from "./testButtons";
 
@@ -15,7 +15,7 @@ function LandingPage() {
       <ButtonRow />
       <Switch>
         <Route path="/overview" component={Overview} />
-        <Route path="/calender" component={Calender} />
+        <Route path="/expansionpanelpage" component={ExpansionPanelPage} />
         <Redirect from="/" exact to="/overview" />
         <Redirect to="/not-found" />
       </Switch>

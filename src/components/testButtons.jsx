@@ -44,9 +44,9 @@ function ButtonRow() {
           Overview
         </Button>
       </Link>
-      <Link className={classes.link} to="/calender">
+      <Link className={classes.link} to="/expansionpanelpage">
         <Button variant="contained" className={classes.button1}>
-          Calender
+          Expansion Panel Page
         </Button>
       </Link>
       <Link className={classes.link} to="/test">

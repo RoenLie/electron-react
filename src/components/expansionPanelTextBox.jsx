@@ -6,17 +6,21 @@ import {
 } from "./styles/expansionPanelTextboxStyle";
 //=============================================================================
 const ExpansionPanelTextBox = ({ input, onChange }) => {
-  let { row, id, name, value } = input;
+  const handleChange = event => {
+    onChange(event, input);
+  };
+
+  let { row, name, value } = input;
 
   return (
     <React.Fragment>
       <FormControl>
-        <StyledInputLabel>{name}</StyledInputLabel>
+        <StyledInputLabel key={row + name}>{name}</StyledInputLabel>
         <StyledInput
           id={row}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={handleChange}
         />
       </FormControl>
     </React.Fragment>

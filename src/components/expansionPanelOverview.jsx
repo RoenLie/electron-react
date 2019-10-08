@@ -12,38 +12,30 @@ import Button from "@material-ui/core/Button";
 
 import SummaryTextboxGroup from "./summaryTextboxGroup";
 import DetailsTextboxGroup from "./detailsTextboxGroup";
+import { randomBytes } from "crypto";
 //=============================================================================
 class CustomExpansionPanel extends Component {
-  state = {};
-
   handleChange = (event, row) => {
-    console.log(event.target);
-    console.log(row);
+    row.value = event.target.value;
     this.setState({ value: event.target.value });
+
+    console.log(randomBytes(199));
   };
 
   createRows = () => {
-    return this.props.input.map(row => (
+    return this.props.input.map((input, key) => (
       <React.Fragment>
-        <ExpansionPanel>
+        <ExpansionPanel key={key}>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id={"panel1_"}
           >
-            <SummaryTextboxGroup
-              index={row.index}
-              input={row}
-              onChange={this.handleChange}
-            />
+            <SummaryTextboxGroup input={input} onChange={this.handleChange} />
           </ExpansionPanelSummary>
 
           <ExpansionPanelDetails aria-controls="panel2-content" id={"panel2_"}>
-            <DetailsTextboxGroup
-              index={row.index}
-              input={row}
-              onChange={this.handleChange}
-            />
+            <DetailsTextboxGroup input={input} onChange={this.handleChange} />
           </ExpansionPanelDetails>
 
           <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>

@@ -1,7 +1,4 @@
 import { withStyles } from "@material-ui/core/styles";
-
-import MuiInputLabel from "@material-ui/core/InputLabel";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 // ============================================================================
