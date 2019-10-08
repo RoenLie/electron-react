@@ -5,14 +5,19 @@ import {
   StyledInput
 } from "./styles/expansionPanelTextboxStyle";
 //=============================================================================
-const ExpansionPanelTextBox = ({ values, onChange, row }) => {
-  let { id, name, value } = values;
+const ExpansionPanelTextBox = ({ input, onChange }) => {
+  let { row, id, name, value } = input;
 
   return (
     <React.Fragment>
       <FormControl>
         <StyledInputLabel>{name}</StyledInputLabel>
-        <StyledInput id={id} name={name} value={value} onChange={onChange} />
+        <StyledInput
+          id={row}
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
       </FormControl>
     </React.Fragment>
   );

@@ -2,11 +2,16 @@ import React from "react";
 
 import ExpansionPanelTextBox from "./expansionPanelTextBox";
 
-const SummaryTextboxGroup = ({ row, values, onChange }) => {
-  return values.values.map(values => (
+const SummaryTextboxGroup = ({ input, onChange }) => {
+  let handleChange = event => {
+    onChange(event, input.row);
+  };
+
+  return input.row.map(input => (
     <React.Fragment>
-      <div Style="pointer-events: none;">
-        <ExpansionPanelTextBox row={row} values={values} onChange={onChange} />
+      {/* <div Style="pointer-events: none;"> */}
+      <div>
+        <ExpansionPanelTextBox input={input} onChange={handleChange} />
       </div>
     </React.Fragment>
   ));

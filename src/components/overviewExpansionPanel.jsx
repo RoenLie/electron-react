@@ -12,48 +12,41 @@ import Button from "@material-ui/core/Button";
 
 import SummaryTextboxGroup from "./summaryTextboxGroup";
 import DetailsTextboxGroup from "./detailsTextboxGroup";
-
 //=============================================================================
 class CustomExpansionPanel extends Component {
   state = {};
 
-  handleChange = event => {
-    this.props.input[1].values[1].value = event.target.value;
-
+  handleChange = (event, row) => {
+    console.log(event.target);
+    console.log(row);
     this.setState({ value: event.target.value });
   };
 
   createRows = () => {
-    return this.props.input.map(values => (
+    return this.props.input.map(row => (
       <React.Fragment>
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
-            id={"panel1_" + "row" + values.row}
+            id={"panel1_"}
           >
             <SummaryTextboxGroup
-              row={values.row}
-              values={values}
+              index={row.index}
+              input={row}
               onChange={this.handleChange}
             />
           </ExpansionPanelSummary>
 
-          <ExpansionPanelDetails
-            aria-controls="panel2-content"
-            id={"panel2_" + "row" + values.row}
-          >
+          <ExpansionPanelDetails aria-controls="panel2-content" id={"panel2_"}>
             <DetailsTextboxGroup
-              row={values.row}
-              values={values}
+              index={row.index}
+              input={row}
               onChange={this.handleChange}
             />
           </ExpansionPanelDetails>
 
-          <ExpansionPanelActions
-            aria-controls="panel3-content"
-            id={"panel3_" + "row" + values.row}
-          >
+          <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>
             <Button size="small">Cancel</Button>
             <Button size="small">Save</Button>
           </ExpansionPanelActions>
