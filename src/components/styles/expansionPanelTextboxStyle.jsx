@@ -1,5 +1,7 @@
 import { withStyles } from "@material-ui/core/styles";
 
+import MuiInputLabel from "@material-ui/core/InputLabel";
+
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 // ============================================================================
@@ -8,9 +10,6 @@ const StyledInputLabel = withStyles({
     marginTop: 5,
     color: "rgb(0, 188, 212)",
     "&:hover": {}
-  },
-  focused: {
-    // backgroundColor: works but not color
   },
   shrink: {
     color: "rgb(0, 188, 212)"

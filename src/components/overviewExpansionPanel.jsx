@@ -17,47 +17,53 @@ import DetailsTextboxGroup from "./detailsTextboxGroup";
 class CustomExpansionPanel extends Component {
   state = {};
 
-  values = [
-    { id: 0, name: "tool sn", value: "" },
-    { id: 1, name: "tool type", value: "" },
-    { id: 2, name: "tool size", value: "" },
-    { id: 3, name: "tool wo", value: "" }
-  ];
+  handleChange = event => {
+    this.props.input[1].values[1].value = event.target.value;
 
-  handleChange = id => event => {
-    this.values[id].value = event.target.value;
     this.setState({ value: event.target.value });
   };
 
-  render() {
-    return (
+  createRows = () => {
+    return this.props.input.map(values => (
       <React.Fragment>
         <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1c-content"
-            id="panel_header"
+            aria-controls="panel1-content"
+            id={"panel1_" + "row" + values.row}
           >
             <SummaryTextboxGroup
-              values={this.values}
+              row={values.row}
+              values={values}
               onChange={this.handleChange}
             />
           </ExpansionPanelSummary>
 
-          <ExpansionPanelDetails>
+          <ExpansionPanelDetails
+            aria-controls="panel2-content"
+            id={"panel2_" + "row" + values.row}
+          >
             <DetailsTextboxGroup
-              values={this.values}
+              row={values.row}
+              values={values}
               onChange={this.handleChange}
             />
           </ExpansionPanelDetails>
 
-          <ExpansionPanelActions>
+          <ExpansionPanelActions
+            aria-controls="panel3-content"
+            id={"panel3_" + "row" + values.row}
+          >
             <Button size="small">Cancel</Button>
             <Button size="small">Save</Button>
           </ExpansionPanelActions>
         </ExpansionPanel>
       </React.Fragment>
-    );
+    ));
+  };
+
+  render() {
+    return <this.createRows />;
   }
 }
 

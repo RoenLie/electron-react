@@ -1,20 +1,13 @@
 import React from "react";
 import ExpansionPanelTextBox from "./expansionPanelTextBox";
 //=============================================================================
-const DetailsTextboxGroup = ({ values, onChange }) => {
-  return (
+const DetailsTextboxGroup = ({ row, values, onChange }) => {
+  return values.values.map(values => (
     <React.Fragment>
-      {values.map(({ id, name, value }) => (
-        <ExpansionPanelTextBox
-          key={id}
-          name={name}
-          value={value}
-          onChange={onChange(id)}
-        />
-      ))}
+      <div>
+        <ExpansionPanelTextBox row={row} values={values} onChange={onChange} />
+      </div>
     </React.Fragment>
-  );
+  ));
 };
-
 export default DetailsTextboxGroup;
-//=============================================================================
