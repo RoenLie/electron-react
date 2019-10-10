@@ -10,32 +10,24 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 
-import SummaryTextboxGroup from "./summaryTextboxGroup";
-import DetailsTextboxGroup from "./detailsTextboxGroup";
-import { randomBytes } from "crypto";
+import SummaryTextboxGroup from "./expPanelRowHeader";
+import DetailsTextboxGroup from "./expPanelRowBody";
 //=============================================================================
-class CustomExpansionPanel extends Component {
-  handleChange = (event, row) => {
-    row.value = event.target.value;
-    this.setState({ value: event.target.value });
-
-    console.log(randomBytes(199));
-  };
-
+class ExpansionPanelRow extends Component {
   createRows = () => {
-    return this.props.input.map((input, key) => (
-      <React.Fragment>
-        <ExpansionPanel key={key}>
+    return this.props.input.map(input => (
+      <div key={Math.random().toString()}>
+        <ExpansionPanel>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id={"panel1_"}
           >
-            <SummaryTextboxGroup input={input} onChange={this.handleChange} />
+            <SummaryTextboxGroup input={input} />
           </ExpansionPanelSummary>
 
           <ExpansionPanelDetails aria-controls="panel2-content" id={"panel2_"}>
-            <DetailsTextboxGroup input={input} onChange={this.handleChange} />
+            <DetailsTextboxGroup input={input} />
           </ExpansionPanelDetails>
 
           <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>
@@ -43,7 +35,7 @@ class CustomExpansionPanel extends Component {
             <Button size="small">Save</Button>
           </ExpansionPanelActions>
         </ExpansionPanel>
-      </React.Fragment>
+      </div>
     ));
   };
 
@@ -52,5 +44,5 @@ class CustomExpansionPanel extends Component {
   }
 }
 
-export default CustomExpansionPanel;
+export default ExpansionPanelRow;
 //=============================================================================

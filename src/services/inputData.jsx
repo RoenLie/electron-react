@@ -76,6 +76,32 @@ const inputData = [
       name: "tool wo",
       value: "wo3"
     }
+  ],
+  [
+    {
+      row: "4",
+      id: "0",
+      name: "tool sn",
+      value: "tool4"
+    },
+    {
+      row: "4",
+      id: "1",
+      name: "tool type",
+      value: "type4"
+    },
+    {
+      row: "4",
+      id: "2",
+      name: "tool size",
+      value: "size4"
+    },
+    {
+      row: "4",
+      id: "3",
+      name: "tool wo",
+      value: "wo4"
+    }
   ]
 ];
 

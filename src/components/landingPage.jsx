@@ -4,9 +4,8 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import ExpansionPanelPage from "./expansionPanelPage";
-import Overview from "./overview";
-import ButtonRow from "./testButtons";
+import ExpansionPanelPage from "./expPanelPage";
+import ButtonRow from "./buttonRow";
 
 function LandingPage() {
   return (
@@ -14,7 +13,6 @@ function LandingPage() {
       <ToastContainer />
       <ButtonRow />
       <Switch>
-        <Route path="/overview" component={Overview} />
         <Route path="/expansionpanelpage" component={ExpansionPanelPage} />
         <Redirect from="/" exact to="/overview" />
         <Redirect to="/not-found" />

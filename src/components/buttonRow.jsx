@@ -39,11 +39,6 @@ function ButtonRow() {
 
   return (
     <React.Fragment>
-      <Link className={classes.link} to="/overview">
-        <Button variant="contained" className={classes.button1}>
-          Overview
-        </Button>
-      </Link>
       <Link className={classes.link} to="/expansionpanelpage">
         <Button variant="contained" className={classes.button1}>
           Expansion Panel Page

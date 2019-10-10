@@ -22,11 +22,15 @@ const ExpansionPanelSummary = withStyles({
     marginTop: 5,
     marginBottom: -1,
     minHeight: 30
+  },
+  focused: {
+    backgroundColor: "#424242"
   }
 })(MuiExpansionPanelSummary);
 
 const ExpansionPanelDetails = withStyles(theme => ({
   root: {
+    flexFlow: "wrap",
     backgroundColor: "#263238",
     padding: theme.spacing(1),
     minHeight: 40
