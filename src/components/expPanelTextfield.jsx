@@ -15,17 +15,13 @@ const ExpansionPanelTextBox = ({ input }) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  let { row, name, value } = input;
+  const { name, value } = input;
+
   return (
     <React.Fragment>
       <FormControl>
         <StyledInputLabel>{name}</StyledInputLabel>
-        <StyledInput
-          id={row}
-          name={name}
-          value={value}
-          onChange={handleChange("text")}
-        />
+        <StyledInput value={value} onChange={handleChange("text")} />
       </FormControl>
     </React.Fragment>
   );
