@@ -14,7 +14,7 @@ function LandingPage() {
       <ButtonRow />
       <Switch>
         <Route path="/expansionpanelpage" component={ExpansionPanelPage} />
-        <Redirect from="/" exact to="/overview" />
+        <Redirect from="/" exact to="/expansionpanelpage" />
         <Redirect to="/not-found" />
       </Switch>
     </React.Fragment>

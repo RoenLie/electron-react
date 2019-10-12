@@ -9,19 +9,30 @@ import {
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
+import SimpleMenu from "./expPanelRowMenu";
 
 import SummaryTextboxGroup from "./expPanelRowHeader";
 import DetailsTextboxGroup from "./expPanelRowBody";
 //=============================================================================
-const ExpansionPanelRow = ({ input, origin }) => {
-  const onClickRemoveItem = () => {
-    console.log(origin);
-    origin.pop();
-    console.log(origin);
+const ExpansionPanelRow = ({ input, origin, jobList, onDelete, onMove }) => {
+  const [inputs, setInputs] = React.useState({ origin: origin, values: input });
+
+  const onClickSaveChanges = () => {
+    setInputs({ ...inputs, values: input });
+  };
+
+  const jobKey = origin.indexOf(input);
+
+  const onClickDeleteRow = () => {
+    onDelete(origin.splice(jobKey, 1));
+  };
+
+  const onClickMoveRow = job => {
+    onMove(job, origin.splice(jobKey, 1));
   };
 
   return (
-    <React.Fragment key={Math.random().toString()}>
+    <React.Fragment>
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -35,10 +46,17 @@ const ExpansionPanelRow = ({ input, origin }) => {
         </ExpansionPanelDetails>
 
         <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>
-          <Button size="small" onClick={onClickRemoveItem}>
+          <Button size="small" onClick={onClickSaveChanges}>
+            save
+          </Button>
+          <SimpleMenu
+            jobList={jobList}
+            jobKey={jobKey}
+            onClick={onClickMoveRow}
+          />
+          <Button size="small" onClick={onClickDeleteRow}>
             remove
           </Button>
-          <Button size="small">Save</Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
     </React.Fragment>
