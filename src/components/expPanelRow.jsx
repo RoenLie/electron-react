@@ -1,11 +1,9 @@
 import React from "react";
-
-import {
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  ExpansionPanelActions
-} from "./styles/expansionPanelStyle";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
+import expnStyles from "./styles/expnStyle";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
@@ -33,20 +31,30 @@ const ExpansionPanelRow = ({ input, origin, jobList, onDelete, onMove }) => {
 
   return (
     <React.Fragment>
-      <ExpansionPanel>
+      <ExpansionPanel className={expnStyles().expnRoot}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
+          className={expnStyles().expnSum}
         >
           <SummaryTextboxGroup input={input} />
         </ExpansionPanelSummary>
 
-        <ExpansionPanelDetails aria-controls="panel2-content" id={"panel2_"}>
+        <ExpansionPanelDetails
+          aria-controls="panel2-content"
+          className={expnStyles().expnDetailsTool}
+        >
           <DetailsTextboxGroup input={input} />
         </ExpansionPanelDetails>
 
-        <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>
-          <Button size="small" onClick={onClickSaveChanges}>
+        <ExpansionPanelActions
+          aria-controls="panel3-content"
+          className={expnStyles().expnActionsTool}
+        >
+          <Button
+            className={expnStyles().expnActionsButton}
+            onClick={onClickSaveChanges}
+          >
             save
           </Button>
           <SimpleMenu
@@ -54,7 +62,10 @@ const ExpansionPanelRow = ({ input, origin, jobList, onDelete, onMove }) => {
             jobKey={jobKey}
             onClick={onClickMoveRow}
           />
-          <Button size="small" onClick={onClickDeleteRow}>
+          <Button
+            className={expnStyles().expnActionsButton}
+            onClick={onClickDeleteRow}
+          >
             remove
           </Button>
         </ExpansionPanelActions>

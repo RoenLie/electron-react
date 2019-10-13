@@ -1,11 +1,9 @@
 import React from "react";
-
-import {
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
-  ExpansionPanelActions
-} from "./styles/expansionPanelStyle";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
+import expnStyles from "./styles/expnStyle";
 
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
@@ -29,17 +27,21 @@ const ExpansionPanelJob = ({ input }) => {
 
   return input.map(input => (
     <React.Fragment key={Math.random().toString()}>
-      <ExpansionPanel>
+      <ExpansionPanel className={expnStyles().expnRoot}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
+          className={expnStyles().expnSum}
         >
           {input.job_info.map(job => (
             <SummaryTextboxGroup key={Math.random().toString()} input={job} />
           ))}
         </ExpansionPanelSummary>
 
-        <ExpansionPanelDetails aria-controls="panel2-content">
+        <ExpansionPanelDetails
+          aria-controls="panel2-content"
+          className={expnStyles().expnDetailsJob}
+        >
           {input.tool_list.map(tool => (
             <ExpansionPanelRow
               key={Math.random().toString()}
@@ -52,9 +54,12 @@ const ExpansionPanelJob = ({ input }) => {
           ))}
         </ExpansionPanelDetails>
 
-        <ExpansionPanelActions aria-controls="panel3-content" id={"panel3_"}>
-          <Button size="small">Cancel</Button>
-          <Button size="small">Save</Button>
+        <ExpansionPanelActions
+          aria-controls="panel3-content"
+          className={expnStyles().expnActionsJob}
+        >
+          <Button className={expnStyles().expnActionsButton}>Cancel</Button>
+          <Button className={expnStyles().expnActionsButton}>Save</Button>
         </ExpansionPanelActions>
       </ExpansionPanel>
     </React.Fragment>
