@@ -6,7 +6,7 @@ import NavBarTop from "./navBarTop";
 const ExpansionPanelPage = () => {
   return (
     <React.Fragment>
-      <NavBarTop />
+      <NavBarTop input={jobList} />
       <ExpansionPanelJob input={jobList} />
     </React.Fragment>
   );

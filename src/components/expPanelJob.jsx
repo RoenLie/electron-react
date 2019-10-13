@@ -5,6 +5,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import expnStyles from "./styles/expnStyle";
 
+import Droppable from "./drag_drop/droppable";
+
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import ExpansionPanelRow from "./expPanelRow";
@@ -37,23 +39,23 @@ const ExpansionPanelJob = ({ input }) => {
             <SummaryTextboxGroup key={Math.random().toString()} input={job} />
           ))}
         </ExpansionPanelSummary>
-
-        <ExpansionPanelDetails
-          aria-controls="panel2-content"
-          className={expnStyles().expnDetailsJob}
-        >
-          {input.tool_list.map(tool => (
-            <ExpansionPanelRow
-              key={Math.random().toString()}
-              input={tool}
-              origin={input.tool_list}
-              jobList={originalInput}
-              onDelete={onDeleteRow}
-              onMove={onMoveRow}
-            />
-          ))}
-        </ExpansionPanelDetails>
-
+        <Droppable id={Math.random().toString()}>
+          <ExpansionPanelDetails
+            aria-controls="panel2-content"
+            className={expnStyles().expnDetailsJob}
+          >
+            {input.tool_list.map(tool => (
+              <ExpansionPanelRow
+                key={Math.random().toString()}
+                input={tool}
+                origin={input.tool_list}
+                jobList={originalInput}
+                onDelete={onDeleteRow}
+                onMove={onMoveRow}
+              />
+            ))}
+          </ExpansionPanelDetails>
+        </Droppable>
         <ExpansionPanelActions
           aria-controls="panel3-content"
           className={expnStyles().expnActionsJob}

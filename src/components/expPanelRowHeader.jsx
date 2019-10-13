@@ -5,7 +5,7 @@ import ExpansionPanelTextBox from "./expPanelTextfield";
 const SummaryTextboxGroup = ({ input }) => {
   return input.map(input => (
     <React.Fragment key={Math.random().toString()}>
-      <div Style="pointer-events: none;">
+      <div style={{ pointerEvents: "none" }}>
         <ExpansionPanelTextBox input={input} />
       </div>
     </React.Fragment>

@@ -24,6 +24,9 @@ const StyledInput = withStyles({
     color: "rgb(243, 243, 243)"
   },
   underline: {
+    "&:focus": {
+      borderBottom: "1px solid rgb(0, 188, 212)"
+    },
     "&:before": { borderBottom: "1px solid RGB(100,100,100)" },
     "&:after": {
       borderBottom: "1px solid rgb(0, 188, 212)"

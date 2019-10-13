@@ -5,6 +5,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import expnStyles from "./styles/expnStyle";
 
+import Draggable from "./drag_drop/draggable";
+
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import SimpleMenu from "./expPanelRowMenu";
@@ -31,45 +33,47 @@ const ExpansionPanelRow = ({ input, origin, jobList, onDelete, onMove }) => {
 
   return (
     <React.Fragment>
-      <ExpansionPanel className={expnStyles().expnRoot}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          className={expnStyles().expnSum}
-        >
-          <SummaryTextboxGroup input={input} />
-        </ExpansionPanelSummary>
-
-        <ExpansionPanelDetails
-          aria-controls="panel2-content"
-          className={expnStyles().expnDetailsTool}
-        >
-          <DetailsTextboxGroup input={input} />
-        </ExpansionPanelDetails>
-
-        <ExpansionPanelActions
-          aria-controls="panel3-content"
-          className={expnStyles().expnActionsTool}
-        >
-          <Button
-            className={expnStyles().expnActionsButton}
-            onClick={onClickSaveChanges}
+      <Draggable id={Math.random().toString()}>
+        <ExpansionPanel className={expnStyles().expnRoot}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            className={expnStyles().expnSum}
           >
-            save
-          </Button>
-          <SimpleMenu
-            jobList={jobList}
-            jobKey={jobKey}
-            onClick={onClickMoveRow}
-          />
-          <Button
-            className={expnStyles().expnActionsButton}
-            onClick={onClickDeleteRow}
+            <SummaryTextboxGroup input={input} />
+          </ExpansionPanelSummary>
+
+          <ExpansionPanelDetails
+            aria-controls="panel2-content"
+            className={expnStyles().expnDetailsTool}
           >
-            remove
-          </Button>
-        </ExpansionPanelActions>
-      </ExpansionPanel>
+            <DetailsTextboxGroup input={input} />
+          </ExpansionPanelDetails>
+
+          <ExpansionPanelActions
+            aria-controls="panel3-content"
+            className={expnStyles().expnActionsTool}
+          >
+            <Button
+              className={expnStyles().expnActionsButton}
+              onClick={onClickSaveChanges}
+            >
+              save
+            </Button>
+            <SimpleMenu
+              jobList={jobList}
+              jobKey={jobKey}
+              onClick={onClickMoveRow}
+            />
+            <Button
+              className={expnStyles().expnActionsButton}
+              onClick={onClickDeleteRow}
+            >
+              remove
+            </Button>
+          </ExpansionPanelActions>
+        </ExpansionPanel>
+      </Draggable>
     </React.Fragment>
   );
 };
