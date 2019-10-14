@@ -8,10 +8,10 @@ class Droppable extends Component {
     const jobKey = event.dataTransfer.getData("jobKey");
     const toolKey = event.dataTransfer.getData("toolKey");
 
-    const { jobList, job, onMove } = this.props;
+    const { jobList, job, onMove: updateState } = this.props;
     const tool = jobList[jobKey].tool_list.splice(toolKey, 1);
     job.tool_list.push(...tool);
-    onMove();
+    updateState();
   };
 
   allowDrop = event => {
