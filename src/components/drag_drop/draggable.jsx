@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 class Draggable extends Component {
   drag = e => {
-    e.dataTransfer.setData("transfer", e.target.id);
+    const { jobKey, toolKey } = this.props;
+    e.dataTransfer.setData("jobKey", jobKey);
+    e.dataTransfer.setData("toolKey", toolKey);
   };
 
   noAllowDrop = e => {
@@ -17,7 +19,6 @@ class Draggable extends Component {
         draggable="true"
         onDragStart={this.drag}
         onDragOver={this.noAllowDrop}
-        style={this.props.style}
       >
         {this.props.children}
       </div>
@@ -27,7 +28,6 @@ class Draggable extends Component {
 
 Draggable.propTypes = {
   id: PropTypes.string,
-  style: PropTypes.object,
   children: PropTypes.node
 };
 

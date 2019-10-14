@@ -1,9 +1,5 @@
 import React from "react";
-import FormControl from "@material-ui/core/FormControl";
-import {
-  StyledInputLabel,
-  StyledInput
-} from "./styles/expansionPanelTextboxStyle";
+import StyledTextField from "./styles/textfieldStyled";
 //=============================================================================
 const ExpansionPanelTextBox = ({ input }) => {
   const [values, setValues] = React.useState({ value: input.value });
@@ -14,13 +10,9 @@ const ExpansionPanelTextBox = ({ input }) => {
   };
 
   const { name, value } = input;
-
   return (
     <React.Fragment>
-      <FormControl>
-        <StyledInputLabel>{name}</StyledInputLabel>
-        <StyledInput value={value} onChange={handleChange} />
-      </FormControl>
+      <StyledTextField label={name} value={value} onChange={handleChange} />
     </React.Fragment>
   );
 };

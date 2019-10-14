@@ -3,6 +3,7 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import StyledTextField from "./styles/textfieldStyled";
+import _ from "lodash";
 
 const buttonStyle = makeStyles({
   root: {
@@ -44,7 +45,7 @@ const StyledMenu = withStyles({
   />
 ));
 
-const NavBarTopMenuNew = ({ input }) => {
+const NavBarTopMenuNew = ({ input, onUpdate }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -56,8 +57,8 @@ const NavBarTopMenuNew = ({ input }) => {
   };
 
   const [values, setValues] = React.useState({
-    jobName: "",
-    jobDate: "",
+    "job name": "",
+    "job date": "",
     customer: ""
   });
 
@@ -67,7 +68,24 @@ const NavBarTopMenuNew = ({ input }) => {
   };
 
   const handleSubmit = () => {
-    console.log(values);
+    const objectToArray = Object.entries(values);
+    objectToArray.map(arr => {
+      arr[0] = {
+        name: arr[0],
+        value: arr[1]
+      };
+      arr.pop();
+    });
+
+    const newJobObject = {
+      objectId: "awrwdw",
+      job_info: [_.flattenDeep(objectToArray)],
+      tool_list: []
+    };
+
+    input.splice(input.length - 1, 0, newJobObject);
+
+    onUpdate(input);
   };
 
   return (
@@ -84,21 +102,21 @@ const NavBarTopMenuNew = ({ input }) => {
         <div>
           <StyledTextField
             label="job name"
-            value={values.jobName}
-            onChange={handleChange("jobName")}
+            value={values["job name"]}
+            onChange={handleChange("job name")}
           />
         </div>
         <div>
           <StyledTextField
             label="job date"
-            value={values.jobDate}
-            onChange={handleChange("jobDate")}
+            value={values["job date"]}
+            onChange={handleChange("job date")}
           />
         </div>
         <div>
           <StyledTextField
             label="customer name"
-            value={values.customer}
+            value={values["customer"]}
             onChange={handleChange("customer")}
           />
         </div>

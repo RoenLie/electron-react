@@ -1,78 +1,76 @@
 import React from "react";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
-import expnStyles from "./styles/expnStyle";
+
+import {
+  ExpPanelJob,
+  ExpPanelSumJob,
+  ExpPanelDetJob,
+  ExpPanelActJob,
+  ExpPanelActJobBtn
+} from "./styles/expnStyle";
 
 import Draggable from "./drag_drop/draggable";
-
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
 import SimpleMenu from "./expPanelRowMenu";
-
 import SummaryTextboxGroup from "./expPanelRowHeader";
 import DetailsTextboxGroup from "./expPanelRowBody";
 //=============================================================================
-const ExpansionPanelRow = ({ input, origin, jobList, onDelete, onMove }) => {
-  const [inputs, setInputs] = React.useState({ origin: origin, values: input });
+const ExpansionPanelRow = ({
+  tool,
+  job,
+  toolList,
+  jobList,
+  onDelete,
+  onMove
+}) => {
+  const [inputs, setInputs] = React.useState({
+    toolList: toolList,
+    values: tool
+  });
 
   const onClickSaveChanges = () => {
-    setInputs({ ...inputs, values: input });
+    setInputs({ ...inputs, values: tool });
   };
 
-  const jobKey = origin.indexOf(input);
+  const jobKey = jobList.indexOf(job);
+  const toolKey = toolList.indexOf(tool);
 
   const onClickDeleteRow = () => {
-    onDelete(origin.splice(jobKey, 1));
+    onDelete(toolList.splice(toolKey, 1));
   };
 
   const onClickMoveRow = job => {
-    onMove(job, origin.splice(jobKey, 1));
+    onMove(job, toolList.splice(toolKey, 1));
   };
 
   return (
     <React.Fragment>
-      <Draggable id={Math.random().toString()}>
-        <ExpansionPanel className={expnStyles().expnRoot}>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1-content"
-            className={expnStyles().expnSum}
-          >
-            <SummaryTextboxGroup input={input} />
-          </ExpansionPanelSummary>
+      <Draggable
+        id={Math.random().toString()}
+        jobKey={jobKey}
+        toolKey={toolKey}
+      >
+        <ExpPanelJob>
+          <ExpPanelSumJob>
+            <SummaryTextboxGroup input={tool} />
+          </ExpPanelSumJob>
 
-          <ExpansionPanelDetails
-            aria-controls="panel2-content"
-            className={expnStyles().expnDetailsTool}
-          >
-            <DetailsTextboxGroup input={input} />
-          </ExpansionPanelDetails>
+          <ExpPanelDetJob>
+            <DetailsTextboxGroup input={tool} />
+          </ExpPanelDetJob>
 
-          <ExpansionPanelActions
-            aria-controls="panel3-content"
-            className={expnStyles().expnActionsTool}
-          >
-            <Button
-              className={expnStyles().expnActionsButton}
-              onClick={onClickSaveChanges}
-            >
+          <ExpPanelActJob>
+            <ExpPanelActJobBtn onClick={onClickSaveChanges}>
               save
-            </Button>
+            </ExpPanelActJobBtn>
             <SimpleMenu
               jobList={jobList}
-              jobKey={jobKey}
+              toolKey={toolKey}
               onClick={onClickMoveRow}
             />
-            <Button
-              className={expnStyles().expnActionsButton}
-              onClick={onClickDeleteRow}
-            >
+            <ExpPanelActJobBtn onClick={onClickDeleteRow}>
               remove
-            </Button>
-          </ExpansionPanelActions>
-        </ExpansionPanel>
+            </ExpPanelActJobBtn>
+          </ExpPanelActJob>
+        </ExpPanelJob>
       </Draggable>
     </React.Fragment>
   );

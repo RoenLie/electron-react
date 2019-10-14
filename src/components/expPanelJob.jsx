@@ -1,18 +1,18 @@
 import React from "react";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
-import expnStyles from "./styles/expnStyle";
-
+import {
+  ExpPanelJob,
+  ExpPanelSumJob,
+  ExpPanelDetJob,
+  ExpPanelActJob,
+  ExpPanelActJobBtn
+} from "./styles/expnStyle";
 import Droppable from "./drag_drop/droppable";
-
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@material-ui/core/Button";
 import ExpansionPanelRow from "./expPanelRow";
 import SummaryTextboxGroup from "./expPanelRowHeader";
 
 const ExpansionPanelJob = ({ input }) => {
+  const jobList = input;
+
   const [inputs, setInputs] = React.useState({ input: input });
 
   const onDeleteRow = deletedRow => {
@@ -25,45 +25,50 @@ const ExpansionPanelJob = ({ input }) => {
     setInputs({ ...inputs, input: input });
   };
 
-  const originalInput = input;
+  const [expanded, setExpanded] = React.useState({});
+
+  const handleChange = panel => {
+    expanded[panel] = !expanded[panel];
+    console.log(panel, expanded[panel]);
+    setExpanded({ expanded, [panel]: expanded[panel] });
+  };
 
   return input.map(input => (
     <React.Fragment key={Math.random().toString()}>
-      <ExpansionPanel className={expnStyles().expnRoot}>
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          className={expnStyles().expnSum}
-        >
+      <ExpPanelJob
+        expanded={expanded[input.objectId]}
+        onChange={() => handleChange(input.objectId)}
+      >
+        <ExpPanelSumJob>
           {input.job_info.map(job => (
             <SummaryTextboxGroup key={Math.random().toString()} input={job} />
           ))}
-        </ExpansionPanelSummary>
-        <Droppable id={Math.random().toString()}>
-          <ExpansionPanelDetails
-            aria-controls="panel2-content"
-            className={expnStyles().expnDetailsJob}
-          >
+        </ExpPanelSumJob>
+        <Droppable
+          id={Math.random().toString()}
+          job={input}
+          jobList={jobList}
+          onMove={onMoveRow}
+        >
+          <ExpPanelDetJob>
             {input.tool_list.map(tool => (
               <ExpansionPanelRow
                 key={Math.random().toString()}
-                input={tool}
-                origin={input.tool_list}
-                jobList={originalInput}
+                tool={tool}
+                job={input}
+                toolList={input.tool_list}
+                jobList={jobList}
                 onDelete={onDeleteRow}
                 onMove={onMoveRow}
               />
             ))}
-          </ExpansionPanelDetails>
+          </ExpPanelDetJob>
         </Droppable>
-        <ExpansionPanelActions
-          aria-controls="panel3-content"
-          className={expnStyles().expnActionsJob}
-        >
-          <Button className={expnStyles().expnActionsButton}>Cancel</Button>
-          <Button className={expnStyles().expnActionsButton}>Save</Button>
-        </ExpansionPanelActions>
-      </ExpansionPanel>
+        <ExpPanelActJob>
+          <ExpPanelActJobBtn>Cancel</ExpPanelActJobBtn>
+          <ExpPanelActJobBtn>Save</ExpPanelActJobBtn>
+        </ExpPanelActJob>
+      </ExpPanelJob>
     </React.Fragment>
   ));
 };

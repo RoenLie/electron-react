@@ -13,12 +13,12 @@ const navBarStyle = makeStyles({
   }
 });
 
-const NavBarTop = ({ input }) => {
+const NavBarTop = ({ input, onUpdate }) => {
   return (
     <React.Fragment>
       <AppBar className={navBarStyle().root} position="sticky">
         <Toolbar variant="dense">
-          <NavBarTopMenuNew input={input} />
+          <NavBarTopMenuNew input={input} onUpdate={onUpdate} />
         </Toolbar>
       </AppBar>
     </React.Fragment>
