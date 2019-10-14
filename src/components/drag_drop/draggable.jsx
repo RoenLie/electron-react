@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Draggable extends Component {
-  drag = e => {
+  drag = event => {
     const { jobKey, toolKey } = this.props;
-    e.dataTransfer.setData("jobKey", jobKey);
-    e.dataTransfer.setData("toolKey", toolKey);
+    event.dataTransfer.setData("jobKey", jobKey);
+    event.dataTransfer.setData("toolKey", toolKey);
   };
 
-  noAllowDrop = e => {
-    e.stopPropagation();
+  noAllowDrop = event => {
+    event.stopPropagation();
   };
 
   render() {

@@ -25,19 +25,20 @@ const ExpansionPanelJob = ({ input }) => {
     setInputs({ ...inputs, input: input });
   };
 
-  const [expanded, setExpanded] = React.useState({});
+  const handleUpdate = () => {
+    setInputs({ ...inputs, input: input });
+  };
 
+  const [expanded, setExpanded] = React.useState({});
   const handleChange = panel => {
-    expanded[panel] = !expanded[panel];
-    console.log(panel, expanded[panel]);
-    setExpanded({ expanded, [panel]: expanded[panel] });
+    setExpanded({ ...expanded, [panel]: !expanded[panel] });
   };
 
   return input.map(input => (
     <React.Fragment key={Math.random().toString()}>
       <ExpPanelJob
-        expanded={expanded[input.objectId]}
         onChange={() => handleChange(input.objectId)}
+        expanded={expanded[input.objectId]}
       >
         <ExpPanelSumJob>
           {input.job_info.map(job => (
@@ -48,7 +49,7 @@ const ExpansionPanelJob = ({ input }) => {
           id={Math.random().toString()}
           job={input}
           jobList={jobList}
-          onMove={onMoveRow}
+          onMove={handleUpdate}
         >
           <ExpPanelDetJob>
             {input.tool_list.map(tool => (

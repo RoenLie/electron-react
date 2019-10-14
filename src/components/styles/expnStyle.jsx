@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles, withStyles } from "@material-ui/styles";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
+import MuiExpansionPanel from "@material-ui/core/ExpansionPanel";
+import MuiExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import MuiExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import MuiExpansionPanelActions from "@material-ui/core/ExpansionPanelActions";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 //=============================================================================
@@ -12,8 +12,11 @@ const ExpPanelJob = withStyles({
     width: "100%",
     backgroundColor: "#263238",
     marginBottom: 5
+  },
+  expanded: {
+    border: "2px solid #263238"
   }
-})(props => <ExpansionPanel margin="dense" {...props} />);
+})(props => <MuiExpansionPanel margin="dense" {...props} />);
 //=============================================================================
 const ExpPanelSumJob = withStyles({
   root: {
@@ -22,7 +25,7 @@ const ExpPanelSumJob = withStyles({
   },
   expanded: {}
 })(props => (
-  <ExpansionPanelSummary
+  <MuiExpansionPanelSummary
     margin="dense"
     expandIcon={<ExpandMoreIcon />}
     aria-controls="panel1-content"
@@ -38,7 +41,7 @@ const ExpPanelDetJob = withStyles({
     minHeight: 40
   }
 })(props => (
-  <ExpansionPanelDetails
+  <MuiExpansionPanelDetails
     margin="dense"
     aria-controls="panel2-content"
     {...props}
@@ -51,7 +54,7 @@ const ExpPanelActJob = withStyles({
     padding: 5
   }
 })(props => (
-  <ExpansionPanelActions
+  <MuiExpansionPanelActions
     margin="dense"
     aria-controls="panel3-content"
     {...props}
@@ -64,48 +67,6 @@ const ExpPanelActJobBtn = withStyles({
   }
 })(props => <Button size="small" {...props} />);
 //=============================================================================
-const expnStyles = makeStyles({
-  expnRoot: {
-    width: "100%",
-    backgroundColor: "#263238",
-    marginBottom: 5,
-    margin: "dense",
-    expanded: { margin: "dense" }
-  },
-  expnSum: {
-    backgroundColor: "#263238",
-    borderBottom: "1px solid #000000",
-    color: "rgba(255, 255, 255, 1)",
-    minHeight: 30,
-    focused: {
-      backgroundColor: "#424242"
-    }
-  },
-  expnDetailsJob: {
-    flexFlow: "wrap",
-    backgroundColor: "#111111",
-    padding: 20,
-    minHeight: 40
-  },
-  expnDetailsTool: {
-    flexFlow: "wrap",
-    backgroundColor: "#313131",
-    padding: 20,
-    minHeight: 40
-  },
-  expnActionsJob: {
-    backgroundColor: "#111111",
-    padding: 5
-  },
-  expnActionsTool: {
-    backgroundColor: "#313131",
-    padding: 5
-  },
-  expnActionsButton: {
-    size: "small",
-    color: "#F3F3F3"
-  }
-});
 
 export {
   ExpPanelJob,
@@ -114,5 +75,3 @@ export {
   ExpPanelActJob,
   ExpPanelActJobBtn
 };
-
-export default expnStyles;
