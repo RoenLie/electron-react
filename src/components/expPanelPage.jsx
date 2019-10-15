@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { jobList } from "../services/toolData";
 import ExpansionPanelJob from "./expPanelJob";
 import NavBarTop from "./navBarTop";
 
 const ExpansionPanelPage = () => {
-  const [inputs, setInput] = React.useState({
+  const [inputs, setInput] = useState({
     input: jobList
   });
 

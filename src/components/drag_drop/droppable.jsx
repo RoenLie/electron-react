@@ -1,38 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class Droppable extends Component {
-  drop = event => {
+export default function Droppable(props) {
+  const { jobList, job, onMove: updateState } = props;
+
+  function drop(event) {
     event.preventDefault();
 
     const jobKey = event.dataTransfer.getData("jobKey");
     const toolKey = event.dataTransfer.getData("toolKey");
-
-    const { jobList, job, onMove: updateState } = this.props;
     const tool = jobList[jobKey].tool_list.splice(toolKey, 1);
+
     job.tool_list.push(...tool);
     updateState();
-  };
-
-  allowDrop = event => {
-    event.preventDefault();
-  };
-
-  render() {
-    return (
-      <div id={this.props.id} onDrop={this.drop} onDragOver={this.allowDrop}>
-        {this.props.children}
-      </div>
-    );
   }
+
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  return (
+    <div id={props.id} onDrop={drop} onDragOver={allowDrop}>
+      {props.children}
+    </div>
+  );
 }
 
 Droppable.propTypes = {
   id: PropTypes.string,
   children: PropTypes.node
 };
-
-export default Droppable;
 
 //=============================================================================
 // working example //

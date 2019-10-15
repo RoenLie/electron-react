@@ -10,36 +10,46 @@ import {
 
 import Draggable from "./drag_drop/draggable";
 import SimpleMenu from "./expPanelRowMenu";
-import SummaryTextboxGroup from "./expPanelRowHeader";
-import DetailsTextboxGroup from "./expPanelRowBody";
+import ExpansionPanelTextBox from "./expPanelTextfield";
 //=============================================================================
-const ExpansionPanelRow = ({
-  tool,
-  job,
-  toolList,
-  jobList,
-  onDelete,
-  onMove
-}) => {
+function SummaryTextboxGroup({ input: fields }) {
+  return fields.map(field => (
+    <div key={Math.random().toString()} style={{ pointerEvents: "none" }}>
+      <ExpansionPanelTextBox input={field} />
+    </div>
+  ));
+}
+//=============================================================================
+function DetailsTextboxGroup({ input: fields }) {
+  return fields.map(field => (
+    <React.Fragment key={Math.random().toString()}>
+      <ExpansionPanelTextBox input={field} />
+    </React.Fragment>
+  ));
+}
+export { SummaryTextboxGroup, DetailsTextboxGroup };
+//=============================================================================
+export default function ExpansionPanelRow(props) {
+  const { tool, job, toolList, jobList, onDelete, onMove } = props;
+  const jobKey = jobList.indexOf(job);
+  const toolKey = toolList.indexOf(tool);
+
   const [inputs, setInputs] = React.useState({
     toolList: toolList,
     values: tool
   });
 
-  const onClickSaveChanges = () => {
+  function onClickSaveChanges() {
     setInputs({ ...inputs, values: tool });
-  };
+  }
 
-  const jobKey = jobList.indexOf(job);
-  const toolKey = toolList.indexOf(tool);
-
-  const onClickDeleteRow = () => {
+  function onClickDeleteRow() {
     onDelete(toolList.splice(toolKey, 1));
-  };
+  }
 
-  const onClickMoveRow = job => {
+  function onClickMoveRow(job) {
     onMove(job, toolList.splice(toolKey, 1));
-  };
+  }
 
   return (
     <React.Fragment>
@@ -74,7 +84,5 @@ const ExpansionPanelRow = ({
       </Draggable>
     </React.Fragment>
   );
-};
-
-export default ExpansionPanelRow;
+}
 //=============================================================================

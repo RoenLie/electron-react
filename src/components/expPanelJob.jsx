@@ -7,60 +7,64 @@ import {
   ExpPanelActJobBtn
 } from "./styles/expnStyle";
 import Droppable from "./drag_drop/droppable";
-import ExpansionPanelRow from "./expPanelRow";
-import SummaryTextboxGroup from "./expPanelRowHeader";
+import ExpansionPanelRow, { SummaryTextboxGroup } from "./expPanelRow";
+//=============================================================================
+export default function ExpansionPanelJob(props) {
+  const { input: jobList } = props;
 
-const ExpansionPanelJob = ({ input }) => {
-  const jobList = input;
-
-  const [inputs, setInputs] = React.useState({ input: input });
-
-  const onDeleteRow = deletedRow => {
-    input[input.length - 1].tool_list.push(...deletedRow);
-    setInputs({ ...inputs, input: input });
-  };
-
-  const onMoveRow = (job, movedRow) => {
-    job.tool_list.push(...movedRow);
-    setInputs({ ...inputs, input: input });
-  };
-
-  const handleUpdate = () => {
-    setInputs({ ...inputs, input: input });
-  };
-
+  const [inputs, setInputs] = React.useState(jobList);
   const [expanded, setExpanded] = React.useState({});
-  const handleChange = panel => {
-    setExpanded({ ...expanded, [panel]: !expanded[panel] });
-  };
 
-  return input.map(input => (
+  function handleDeleteTool(deletedRow) {
+    setInputs({
+      ...inputs,
+      input: jobList[jobList.length - 1].tool_list.push(...deletedRow)
+    });
+  }
+
+  function handleMoveTool(job, movedRow) {
+    job.tool_list.push(...movedRow);
+    setInputs({ ...inputs, input: jobList });
+  }
+
+  function handleUpdate() {
+    setInputs({ ...inputs, input: jobList });
+  }
+
+  function handleExpand(panel) {
+    setExpanded({ ...expanded, [panel]: !expanded[panel] });
+  }
+
+  return jobList.map(job => (
     <React.Fragment key={Math.random().toString()}>
       <ExpPanelJob
-        onChange={() => handleChange(input.objectId)}
-        expanded={expanded[input.objectId]}
+        onChange={() => handleExpand(job.objectId)}
+        expanded={expanded[job.objectId]}
       >
         <ExpPanelSumJob>
-          {input.job_info.map(job => (
-            <SummaryTextboxGroup key={Math.random().toString()} input={job} />
+          {job.job_info.map(jobInfo => (
+            <SummaryTextboxGroup
+              key={Math.random().toString()}
+              input={jobInfo}
+            />
           ))}
         </ExpPanelSumJob>
         <Droppable
           id={Math.random().toString()}
-          job={input}
+          job={job}
           jobList={jobList}
           onMove={handleUpdate}
         >
           <ExpPanelDetJob>
-            {input.tool_list.map(tool => (
+            {job.tool_list.map(tool => (
               <ExpansionPanelRow
                 key={Math.random().toString()}
                 tool={tool}
-                job={input}
-                toolList={input.tool_list}
+                job={job}
+                toolList={job.tool_list}
                 jobList={jobList}
-                onDelete={onDeleteRow}
-                onMove={onMoveRow}
+                onDelete={handleDeleteTool}
+                onMove={handleMoveTool}
               />
             ))}
           </ExpPanelDetJob>
@@ -72,5 +76,5 @@ const ExpansionPanelJob = ({ input }) => {
       </ExpPanelJob>
     </React.Fragment>
   ));
-};
-export default ExpansionPanelJob;
+}
+//=============================================================================
