@@ -45,7 +45,7 @@ const StyledMenu = withStyles({
   />
 ));
 
-const NavBarTopMenuNew = ({ input, onUpdate }) => {
+export default function NavBarTopMenuNew({ input, onUpdate }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -127,6 +127,4 @@ const NavBarTopMenuNew = ({ input, onUpdate }) => {
       </StyledMenu>
     </React.Fragment>
   );
-};
-
-export default NavBarTopMenuNew;
+}

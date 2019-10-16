@@ -18,6 +18,8 @@ export default function ExpansionPanelJob(props) {
     setInputs({ ...inputs, input: jobList });
   }
 
+  function sortBySize() {}
+
   return jobList.map(job => (
     <React.Fragment key={job.objectId}>
       <ExpPanelJob>

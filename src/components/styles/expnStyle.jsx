@@ -26,7 +26,6 @@ const ExpPanelSumJob = withStyles({
   expanded: {}
 })(props => (
   <MuiExpansionPanelSummary
-    margin="dense"
     expandIcon={<ExpandMoreIcon />}
     aria-controls="panel1-content"
     {...props}
@@ -41,11 +40,7 @@ const ExpPanelDetJob = withStyles({
     minHeight: 40
   }
 })(props => (
-  <MuiExpansionPanelDetails
-    margin="dense"
-    aria-controls="panel2-content"
-    {...props}
-  />
+  <MuiExpansionPanelDetails aria-controls="panel2-content" {...props} />
 ));
 //=============================================================================
 const ExpPanelActJob = withStyles({
@@ -54,11 +49,7 @@ const ExpPanelActJob = withStyles({
     padding: 5
   }
 })(props => (
-  <MuiExpansionPanelActions
-    margin="dense"
-    aria-controls="panel3-content"
-    {...props}
-  />
+  <MuiExpansionPanelActions aria-controls="panel3-content" {...props} />
 ));
 //=============================================================================
 const ExpPanelActJobBtn = withStyles({
