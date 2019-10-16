@@ -2,16 +2,14 @@ const jobList = [
   {
     objectId: "wawawd",
     job_info: [
-      [
-        {
-          name: "job name",
-          value: "trollA"
-        },
-        {
-          name: "job date",
-          value: "2020.01.01"
-        }
-      ]
+      {
+        name: "job name",
+        value: "trollA"
+      },
+      {
+        name: "job date",
+        value: "2020.01.01"
+      }
     ],
     tool_list: [
       [
@@ -47,16 +45,14 @@ const jobList = [
   {
     objectId: "qweaxs",
     job_info: [
-      [
-        {
-          name: "job name",
-          value: "trollB"
-        },
-        {
-          name: "job date",
-          value: "2020.01.02"
-        }
-      ]
+      {
+        name: "job name",
+        value: "trollB"
+      },
+      {
+        name: "job date",
+        value: "2020.01.02"
+      }
     ],
     tool_list: [
       [
@@ -92,20 +88,18 @@ const jobList = [
   {
     objectId: "eyyyfn",
     job_info: [
-      [
-        {
-          name: "job name",
-          value: "trollC"
-        },
-        {
-          name: "job date",
-          value: "2020.01.02"
-        },
-        {
-          name: "customer name",
-          value: "equinor"
-        }
-      ]
+      {
+        name: "job name",
+        value: "trollC"
+      },
+      {
+        name: "job date",
+        value: "2020.01.02"
+      },
+      {
+        name: "customer name",
+        value: "equinor"
+      }
     ],
     tool_list: [
       [
@@ -141,20 +135,18 @@ const jobList = [
   {
     objectId: "dwadyy",
     job_info: [
-      [
-        {
-          name: "job name",
-          value: "trollD"
-        },
-        {
-          name: "job date",
-          value: "2020.01.02"
-        },
-        {
-          name: "customer name",
-          value: "equinor"
-        }
-      ]
+      {
+        name: "job name",
+        value: "trollD"
+      },
+      {
+        name: "job date",
+        value: "2020.01.02"
+      },
+      {
+        name: "customer name",
+        value: "equinor"
+      }
     ],
     tool_list: [
       [
@@ -190,12 +182,10 @@ const jobList = [
   {
     objectId: "rtuibk",
     job_info: [
-      [
-        {
-          name: "category",
-          value: "unassigned"
-        }
-      ]
+      {
+        name: "category",
+        value: "unassigned"
+      }
     ],
     tool_list: [
       [

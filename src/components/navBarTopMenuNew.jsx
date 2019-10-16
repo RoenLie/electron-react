@@ -86,6 +86,7 @@ const NavBarTopMenuNew = ({ input, onUpdate }) => {
     input.splice(input.length - 1, 0, newJobObject);
 
     onUpdate(input);
+    setAnchorEl(null);
   };
 
   return (

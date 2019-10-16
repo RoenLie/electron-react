@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StyledTextField from "./styles/textfieldStyled";
 //=============================================================================
-const ExpansionPanelTextBox = ({ input }) => {
-  const [values, setValues] = React.useState({ value: input.value });
+export default function ExpansionPanelTextBox(props) {
+  const { name, value, style } = props.input;
 
-  const handleChange = event => {
-    input.value = event.target.value;
-    setValues({ ...values, value: event.target.value });
-  };
+  const [values, setValues] = useState(value);
 
-  const { name, value } = input;
+  function handleChange(event) {
+    setValues(event.target.value);
+  }
+
+  useEffect(() => {
+    if (value !== values) props.input.value = values;
+  });
+
   return (
-    <React.Fragment>
-      <StyledTextField label={name} value={value} onChange={handleChange} />
-    </React.Fragment>
+    <StyledTextField
+      style={style}
+      label={name}
+      value={values}
+      onChange={handleChange}
+    />
   );
-};
-
-export default ExpansionPanelTextBox;
+}
 //=============================================================================
